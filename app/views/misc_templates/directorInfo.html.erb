@@ -1,0 +1,117 @@
+<!--<p><%#=params%></p>-->
+
+<h1>
+  Director #<%=@x.id%> details
+</h1>
+
+<a href="/directors">
+  Go back
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    Name
+  </dt>
+  <dd>
+    <%=@x.name%>
+  </dd>
+
+  <dt>
+    Dob
+  </dt>
+  <dd>
+    <%=@x.dob%>
+  </dd>
+
+  <dt>
+    Bio
+  </dt>
+  <dd>
+    <%=@x.bio%>
+  </dd>
+
+  <dt>
+    Image
+  </dt>
+  <dd>
+    <img src=<%=@x.image%> style="width:250px;">
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%=@x.created_at%>
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%=@x.updated_at%>
+  </dd>
+</dl>
+
+<hr>
+
+<h2>Filmography</h2>
+
+<table border="1">
+  <tbody>
+    <tr>
+      <th>
+        ID
+      </th>
+
+      <th>
+        Image
+      </th>
+
+      <th>
+        Title
+      </th>
+
+      <th>
+        Year
+      </th>
+
+      <th>
+        Director
+      </th>
+
+      <th>
+      </th>
+    </tr>
+    <% @matching_movies.all.each do |movie| %>
+      <tr>
+        <td>
+          <%= movie.id%>
+        </td>
+
+        <td>
+          <img src="https://image.tmdb.org/t/p/w500/5KCVkau1HEl7ZzfPsKAPM0sMiKc.jpg" style="width:250px;">
+        </td>
+
+        <td>
+          The Shawshank Redemption
+        </td>
+
+        <td>
+          1994
+        </td>
+
+        <td>
+          Frank Darabont
+        </td>
+
+        <td>
+          <a href="/movies/1">
+            Show details
+          </a>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
