@@ -50,7 +50,8 @@
         </td>
 
         <td>
-          <%= @x.id%>
+          <% movie_director =  Director.where({ :id => movie.director_id }).at(0)%>
+          <%= movie_director.name%>
         </td>
 
         <td>
