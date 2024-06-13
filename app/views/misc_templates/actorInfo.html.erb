@@ -27,7 +27,7 @@
     Bio
   </dt>
   <dd>
-    <%=@actor.dob%>
+    <%=@actor.bio%>
   </dd>
 
   <dt>
@@ -78,31 +78,33 @@
       <th>
       </th>
     </tr>
+    <% @characters.each do |character|%>
+      <% movie = Movie.find_by({:id => character.movie_id}) %>
+      <tr>
+        <td>
+          <%=movie.title%>
+        </td>
 
-    <tr>
-      <td>
-        The Shawshank Redemption
-      </td>
+        <td>
+          <%=movie.year%>
+        </td>
 
-      <td>
-        1994
-      </td>
+        <td>
+          <%movie_director = Director.where({ :id => movie.director_id }).at(0)%>
+          <%=movie_director.name%>
+        </td>
 
-      <td>
+        <td>
+          <%=character.name%>
+        </td>
 
-        Frank Darabont
-      </td>
-
-      <td>
-        Ellis Boyd "Red" Redding
-      </td>
-
-      <td>
-        <a href="/movies/1">
-          Show details
-        </a>
-      </td>
-    </tr>
+        <td>
+          <a href="/movies/<%=movie.id%>">
+            Show details
+          </a>
+        </td>
+      </tr>
+    <% end %>
 
   </tbody>
 </table>
